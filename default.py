@@ -38,7 +38,7 @@ PATH = "XBMC_TVPOR"
 UATRACK="UA-39199007-1"
 activado=False
 user_agent = 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2049.0 Safari/537.36'
-addon_id = 'plugin.video.tvpor'
+addon_id = 'plugin.video.tvtuga'
 art = '/resources/art/'
 selfAddon = xbmcaddon.Addon(id=addon_id)
 tvporpath = selfAddon.getAddonInfo('path')
