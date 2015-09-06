@@ -25,7 +25,7 @@ TVTugaURL = 'http://www.tvtuga.com'
 TugastreamURL = 'http://www.tugastream.com/'
 TVPTHDURL = 'http://www.tvportugalhd.eu'
 TVPTHDZuukURL = 'http://www.zuuk.pw'
-TVCoresURL = 'http://tvfree.me'
+TVCoresURL = 'http://mytvfree.me/'
 LSHDURL= 'http://livesoccerhq.com'
 TVZuneURL = 'http://www.tvzune.tv/'
 TVZune2URL = 'http://soft.tvzune.co/'
@@ -86,18 +86,18 @@ def canais():
         programas=p_todos()
         mensagemprogresso.close()
     else: programas=[]
-    
+
     sintomecomsorte()
-    
+
     if activado==True: addCanal("[B]Lista Completa[/B]",empty,16,tvporpath + art + 'gravador-ver1.png',nrcanais,'')
     addDir("[B][COLOR white]Informações[/COLOR][/B]",'nada',1,tvporpath + art + 'defs-ver2.png',1,'Clique aqui para voltar ao menu principal.',True)
     if selfAddon.getSetting("listas-pessoais") == "true":
-        addDir("[B][COLOR white]Listas Pessoais[/COLOR][/B]",'nada',6,tvporpath + art + 'listas-ver2.png',1,'Outras listas de canais criadas pela comunidade.',True)        
+        addDir("[B][COLOR white]Listas Pessoais[/COLOR][/B]",'nada',6,tvporpath + art + 'listas-ver2.png',1,'Outras listas de canais criadas pela comunidade.',True)
 
     if selfAddon.getSetting("radios") == "true": addDir("[B][COLOR white]Radios[/COLOR][/B]",'nada',19,tvporpath + art + 'radios-v1.png',1,'Oiça comodamente radios nacionais.',True)
     if selfAddon.getSetting("eventos") == "true": canaison.append('[B][COLOR white]Eventos[/COLOR][/B]'); changeview()
     if selfAddon.getSetting("praias") == "true": addDir("[B][COLOR white]Praias[/COLOR][/B]",'nada',26,tvporpath + art + 'versao-ver2.png',1,'Webcams das melhores praias nacionais.',True)
-    
+
     if selfAddon.getSetting("canais-rtp1") == "true": canaison.append('[B]RTP 1[/B]'); addCanal("[B]RTP 1[/B] " + p_umcanal(programas,'RTP1','nomeprog'),empty,16,tvporpath + art + 'rtp1-ver2.png',nrcanais,p_umcanal(programas,'RTP1','descprog'))
     if selfAddon.getSetting("canais-rtp2") == "true":  canaison.append('[B]RTP 2[/B]'); addCanal("[B]RTP 2[/B] " + p_umcanal(programas,'RTP2','nomeprog'),empty,16,tvporpath + art + 'rtp2-ver2.png',nrcanais,p_umcanal(programas,'RTP2','descprog'))
     if selfAddon.getSetting("canais-sic") == "true":  canaison.append('[B]SIC[/B]'); addCanal("[B]SIC[/B] " + p_umcanal(programas,'SIC','nomeprog'),empty,16,tvporpath + art + 'sic-ver3.png',nrcanais,p_umcanal(programas,'SIC','descprog'))
@@ -121,7 +121,7 @@ def canais():
     if selfAddon.getSetting("canais-rtpi") == "true": canaison.append('[B]RTP Informação[/B]'); addCanal("[B]RTP Informação[/B] " + p_umcanal(programas,'RTPIN','nomeprog'),empty,16,tvporpath + art + 'rtpi-ver1.png',nrcanais,p_umcanal(programas,'RTPIN','descprog'))
     if selfAddon.getSetting("canais-rtpint") == "true": canaison.append('[B]RTP Internacional[/B]'); addCanal("[B]RTP Internacional[/B] " + p_umcanal(programas,'RTPINT','nomeprog'),empty,16,tvporpath + art + 'rtpint-ver1.png',nrcanais,p_umcanal(programas,'RTPINT','descprog'))
     if selfAddon.getSetting("canais-rtpmad") == "true": canaison.append('[B]RTP Madeira[/B]'); addCanal("[B]RTP Madeira[/B] " + p_umcanal(programas,'RTPMD','nomeprog'),empty,16,tvporpath + art + 'rtpmad-ver1.png',nrcanais,p_umcanal(programas,'RTPMD','descprog'))
-    if selfAddon.getSetting("canais-rtpmem") == "true": canaison.append('[B]RTP Memória[/B]'); addCanal("[B]RTP Memória[/B] " + p_umcanal(programas,'RTPM','nomeprog'),empty,16,tvporpath + art + 'rtpmem-ver1.png',nrcanais,p_umcanal(programas,'RTPM','descprog'))   
+    if selfAddon.getSetting("canais-rtpmem") == "true": canaison.append('[B]RTP Memória[/B]'); addCanal("[B]RTP Memória[/B] " + p_umcanal(programas,'RTPM','nomeprog'),empty,16,tvporpath + art + 'rtpmem-ver1.png',nrcanais,p_umcanal(programas,'RTPM','descprog'))
     if selfAddon.getSetting("canais-sick") == "true": canaison.append('[B]SIC K[/B]'); addCanal("[B]SIC K[/B] " + p_umcanal(programas,'SICK','nomeprog'),empty,16,tvporpath + art + 'sick-ver2.png',nrcanais,p_umcanal(programas,'SICK','descprog'))
     if selfAddon.getSetting("canais-sicmulher") == "true": canaison.append('[B]SIC Mulher[/B]'); addCanal("[B]SIC Mulher[/B] " + p_umcanal(programas,'SICM','nomeprog'),empty,16,tvporpath + art + 'sicm-ver3.png',nrcanais,p_umcanal(programas,'SICM','descprog'))
     if selfAddon.getSetting("canais-sicnoticias") == "true": canaison.append('[B]SIC Noticias[/B]'); addCanal("[B]SIC Noticias[/B] " + p_umcanal(programas,'SICN','nomeprog'),empty,16,tvporpath + art + 'sicn-ver2.png',nrcanais,p_umcanal(programas,'SICN','descprog'))
@@ -234,7 +234,7 @@ def request_servidores(url,name,tamanho=0,gravador=False):
         if re.search('TV Globo',nomelista):
             titles.append('Look-TVs')
             ligacao.append('http://look-tvs.com/globo/')
-            
+
         if re.search('TRACE Urban',nomelista):
             titles.append('Trace Oficial')
             ligacao.append('http://www.dailymotion.com/video/x1ahn4f_live-trace-urban_music')
@@ -252,7 +252,7 @@ def request_servidores(url,name,tamanho=0,gravador=False):
             ligacao.append('http://roku.muntumedia.s3.amazonaws.com/playlisttv/T_TPAI.xml')
             titles.append('TPAi Live')
             ligacao.append('http://www.tpai.tv/tpai_rtmp_dynamic_streaming.xml')
-        
+
         #if re.search('Sporting TV',nomelista):
         #    titles.append('Altas Emoções')
         #    ligacao.append(AltasEmocoesURL)
@@ -297,7 +297,7 @@ def request_servidores(url,name,tamanho=0,gravador=False):
                             desgr2=' #' + str(desgrref)
                         titles.append('Desporto Grátis' + desgr2)
                         ligacao.append('http://www.desportogratis.com/' + nomedesgr)
-                        
+
             except: pass
 
         if selfAddon.getSetting("fontes-meocanaltv") == "true":
@@ -348,7 +348,7 @@ def request_servidores(url,name,tamanho=0,gravador=False):
                         titles.append('TV a Cores' + tvacores2)
                         ligacao.append(TVCoresURL + codigo)
             except: pass
-                  
+
         ########################################TUGASTREAM############################
         if selfAddon.getSetting("fontes-tugastream") == "true":
             try:
@@ -397,7 +397,7 @@ def request_servidores(url,name,tamanho=0,gravador=False):
             try:
                 tvtugaref=int(0)
                 tvtugalink=openfile('tvtuga',pastafinal=cachepath)
-                
+
                 nometvtuga=nome.replace('RTP 1-','rtp-1').replace('RTP 2-','rtp-2').replace('TVI-','tvi').replace('FOX-','fox').replace('AXN-','axn').replace('SIC-','sic').replace('AXN Black-','axnblack').replace('AXN White-','axn-white').replace('FOX Life-','fox-life').replace('FOX Crime-','fox-crime').replace('FOX Movies-','fox-movies').replace('SPORTTV 1-','sporttv1').replace('SPORTTV 2-','sporttv2').replace('SPORTTV 3-','sporttv3').replace('SPORTTV 4-','sporttvlive').replace('SPORTTV LIVE-','sporttvlive').replace('Canal Panda-','canal-panda').replace('Hollywood-','canal-hollywood').replace('Eurosport-','eurosport').replace('MOV-','mov').replace('VH1-','vh1').replace('Porto Canal-','portocanal').replace('SIC Noticias-','sic-noticias').replace('SIC Radical-','sicradical').replace('SIC Mulher-','sicmulher').replace('SIC K-','sick').replace('Big Brother VIP-','bigbrothervip').replace('TVI Ficção-','tvi-ficcao').replace('Syfy-','syfy').replace('Benfica TV 1-','benfica-tv').replace('Benfica TV 2-','benfica-tv').replace('CM TV-','cm-tv').replace('RTP Africa-','rtp-africa').replace('RTP Informação-','rtp-informacao').replace('Fashion TV-','fashiontv').replace('ESPN-','espn').replace('A Bola TV-','abola-tv').replace('Casa dos Segredos 4-','secret-story-4-casa-dos-segredos').replace('RTP Açores-','rtp-acores').replace('RTP Internacional-','rtp-internacional').replace('RTP Madeira-','rtp-madeira').replace('RTP Memória-','rtp-memoria').replace('TVI24-','tvi-24').replace('Panda Biggs-','panda-biggs').replace('Económico TV-','economico-tv').replace('Eurosport 2-','eurosport-2').replace('Casa dos Segredos 5-','secret-story-5').replace('Euronews-','euronews')
 
                 tvtuga=re.compile('value="http://www.tvtuga.com/'+nometvtuga+'(.+?)">').findall(tvtugalink)
@@ -410,7 +410,7 @@ def request_servidores(url,name,tamanho=0,gravador=False):
                         ligacao.append(TVTugaURL + '/' + nometvtuga + codigo)
             except: pass
 
-                
+
         ########################################TVDEZ############################
         if selfAddon.getSetting("fontes-tvdez") == "true":
             try:
@@ -435,7 +435,7 @@ def request_servidores(url,name,tamanho=0,gravador=False):
                         ligacao.append(TVDezURL + codigo)
             except: pass
 
-        
+
         if len(ligacao)==1: index=0
         elif activado==True: index=0
         elif len(ligacao)==0: ok=mensagemok('TV Portuguesa', 'Nenhum stream disponivel.'); return
@@ -448,14 +448,14 @@ def request_servidores(url,name,tamanho=0,gravador=False):
                 pre_resolvers(titles,ligacao,index,nome,zapping=gravador)
             else:
                 index=-1
-                
+
                 for linkescolha in ligacao:
                     index=index+1
                     pre_resolvers(titles,ligacao,index,nome,tamanho=tamanho,zapping=gravador)
-                    
+
                 activadoextra2=set(activadoextra)
                 thumb=nome.replace('Mais TVI-','maistvi-ver2.png').replace('AXN-','axn-ver2.png').replace('FOX-','fox-ver2.png').replace('RTP 1-','rtp1-ver2.png').replace('RTP 2-','rtp2-ver2.png').replace('SIC-','sic-ver3.png').replace('SPORTTV 1-','sptv1-ver2.png').replace('SPORTTV 1 HD-','sptvhd-ver2.png').replace('SPORTTV 2-','sptv2-ver2.png').replace('SPORTTV 3-','sptv3-ver2.png').replace('SPORTTV 4-','sptv4-ver2.png').replace('SPORTTV LIVE-','sptvlive-ver1.png').replace('TVI-','tvi-ver2.png').replace('Discovery Channel-','disc-ver2.png').replace('AXN Black-','axnb-ver2.png').replace('AXN White-','axnw-ver2.png').replace('FOX Crime-','foxc-ver2.png').replace('FOX Life-','foxl-ver3.png').replace('FOX Movies-','foxm-ver2.png').replace('Eurosport-','eusp-ver2.png').replace('Hollywood-','hwd-ver2.png').replace('MOV-','mov-ver2.png').replace('Canal Panda-','panda-ver2.png').replace('VH1-','vh1-ver2.png').replace('Benfica TV 1-','btv1-ver1.png').replace('Benfica TV 2-','btv2-ver1.png').replace('Porto Canal-','pcanal-ver2.png').replace('Big Brother VIP-','bbvip-ver2.png').replace('SIC K-','sick-ver2.png').replace('SIC Mulher-','sicm-ver3.png').replace('SIC Noticias-','sicn-ver2.png').replace('SIC Radical-','sicrad-ver2.png').replace('TVI24-','tvi24-ver2.png').replace('TVI Ficção-','tvif-ver2.png').replace('Syfy-','syfy-ver1.png').replace('Odisseia-','odisseia-ver1.png').replace('História-','historia-ver1.png').replace('National Geographic Channel-','natgeo-ver1.png').replace('MTV-','mtv-ver1.png').replace('CM TV-','cmtv-ver1.png').replace('RTP Informação-','rtpi-ver1.png').replace('Disney Channel-','disney-ver1.png').replace('Motors TV-','motors-ver1.png').replace('ESPN America-','espna-ver1.png').replace('Fashion TV-','fash-ver1.png').replace('A Bola TV-','abola-ver1.png').replace('Casa dos Segredos 5-','casadseg-ver1.png').replace('RTP Açores-','rtpac-ver1.png').replace('RTP Internacional-','rtpint-ver1.png').replace('RTP Madeira-','rtpmad-ver1.png').replace('RTP Memória-','rtpmem-ver1.png').replace('RTP Africa-','rtpaf-ver1.png').replace('Panda Biggs-','pbiggs-ver1.png').replace('TV Record-','record-v1.png').replace('TV Globo-','globo-v1.png').replace('Eurosport 2-','eusp2-ver1.png').replace('Discovery Turbo-','discturbo-v1.png').replace('Toros TV-','toros-v1.png').replace('Chelsea TV-','chel-v1.png').replace('Disney Junior-','djun-ver1.png').replace('Económico TV-','econ-v1.png').replace('Caça e Pesca-','cacapesca-v1.png').replace('TPA Internacional-','tpa-ver1.png').replace('TRACE Urban-','traceu.png').replace('Virgin Radio TV-','virginr.png').replace('DJing TV-','djingtv.png')
-                
+
                 nome=nome.replace('-','')
                 SIM='</link>\n<link>'.join(activadoextra2)
                 if SIM=='':
@@ -471,8 +471,8 @@ def request_servidores(url,name,tamanho=0,gravador=False):
                     elif thumb=='cacapesca-v1.png': nome='Caca e Pesca'
                     CONTEUDO='<item>\n<title>%s</title>\n%s\n<thumbnail>%s</thumbnail>\n</item>' % (nome,SIM,thumb)
                 return CONTEUDO
-                    
-               
+
+
 def todosact(parametro):
     LOLI=['<item>\n<title>Actualizado: ' + horaportuguesa(True).replace('%20',' ') + '</title>\n<link>nada</link>\n<thumbnail>nada</thumbnail>\n</item>']
     dialog = xbmcgui.Dialog()
@@ -496,12 +496,12 @@ def todosact(parametro):
         SIM=request_servidores('ignore',parametro)
         LOLI.append(SIM)
         AGORA='\n\n'.join(LOLI)
-    
+
     mensagemprogresso.close()
 
     debugfinal='\n'.join(debug)
     savefile('problema',debugfinal)
-    
+
     keyb = xbmc.Keyboard('', 'Nome do ficheiro da lista')
     keyb.doModal()
     if (keyb.isConfirmed()):
@@ -535,7 +535,7 @@ def pre_resolvers(titles,ligacao,index,nome,tamanho=0,zapping=False):
     try:
         sys.argv[2]=sys.argv[2]+ titles[index]
         if activado==True: mensagemprogresso.update(tamanho,'A criar lista. ' + nome+ ' ' + titles[index],'Por favor aguarde...')
-        
+
         nomeserver=nome.replace('ç','c').replace('ã','a').replace('ó','o') + ' ' + titles[index]
         linkescolha=ligacao[index]
         if linkescolha:
@@ -553,7 +553,7 @@ def pre_resolvers(titles,ligacao,index,nome,tamanho=0,zapping=False):
                     comecarvideo(streamurl,name,True,zapping)
                 else:
                     if activado==False: mensagemok('TV Portuguesa','Precisa de instalar o addon p2p-streams!','Veja aqui como fazer:','http://bit.ly/p2p-instalar')
-                
+
             elif re.search('estadiofutebol',linkescolha):
                 marcador="Pre-catcher: tvdez"; print marcador
                 link=abrir_url_cookie(linkescolha,forcedns=True)
@@ -579,7 +579,7 @@ def pre_resolvers(titles,ligacao,index,nome,tamanho=0,zapping=False):
                 link= abrir_url_tommy(frame1,ref_data)
                 frame2='http://www.livesportshd.eu/' + re.compile('src="http://www.livesportshd.eu/([^"]+?)"').findall(link)[0]
                 ref_data = {'Referer': frame1,'User-Agent':user_agent}
-                
+
                 link= abrir_url_tommy(frame2,ref_data)
                 #frame=re.compile("src='(.+?)'").findall(link)[0]
                 #ref_data = {'Referer': frame2,'User-Agent':user_agent}
@@ -616,7 +616,7 @@ def pre_resolvers(titles,ligacao,index,nome,tamanho=0,zapping=False):
                 if re.search('embedsecure.js',html):
                     html+=abrir_url_tommy(re.compile('src="([^"]+?)embedsecure.js"').findall(html)[0] + 'embedsecure.js',ref_data).decode('string-escape')
                 descobrirresolver(embed,nome,html,zapping,nomeserver)
-                
+
             elif re.search('tvfree',linkescolha):
                 marcador="Pre-catcher: tv a cores"; print marcador
                 ref_data = {'Referer': TVCoresURL,'User-Agent':user_agent}
@@ -642,7 +642,7 @@ def pre_resolvers(titles,ligacao,index,nome,tamanho=0,zapping=False):
                     descobrirresolver(frame, nome,link,zapping,nomeserver)
 
                 else: descobrirresolver(linkescolha, nome,False,zapping,nomeserver)
-                
+
 
             elif re.search('gosporttv',linkescolha):
                 marcador="Pre-catcher: thesporttv.eu"; print marcador
@@ -662,7 +662,7 @@ def pre_resolvers(titles,ligacao,index,nome,tamanho=0,zapping=False):
                             else:opcao= xbmcgui.Dialog().yesno("TV Portuguesa", "Escolha um stream da lista dos disponiveis.", "", "","Stream Extra", 'Stream Principal')
                             if opcao: frame=framedupla[0]
                             else: frame=framedupla[1]
-              
+
                     descobrirresolver(frame, nome,False,zapping,nomeserver)
             elif re.search('lvshd',linkescolha):
                 marcador="Pre-catcher: livesoccerhd"; print marcador
@@ -703,9 +703,9 @@ def pre_resolvers(titles,ligacao,index,nome,tamanho=0,zapping=False):
         else:
             try:debug.append(nomeserver + ' - ' + marcador)
             except: pass
-        
 
-    
+
+
 
 def _descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
     mensagemprogresso.create('TV Portuguesa', 'A carregar stream. (' + nomeserver + ')','Por favor aguarde...')
@@ -722,13 +722,13 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
 
         if linkrecebido==False and not url_frame[0:9]=='stream://':
             marcador="Resolver: O url da frame e " + url_frame; print marcador
-            
+
             url_frame=url_frame.replace(' ','%20')
             link=abrir_url_cookie(url_frame)
             try:link=limparcomentarioshtml(link,url_frame)
             except: pass
             link=clean(link)
-        
+
             link=link.replace('cdn.zuuk.net\/boi.php','').replace('cdn.zuuk.net\/stats.php','').replace('cdn.zuuk.net/boi.php','').replace('cdn.zuuk.net/stats.php','').replace('<p><script language="JavaScript"> setTimeout','<p><script language="JavaScript">setTimeout').replace('micast_ads','')
 
         elif url_frame[0:9]=='stream://':
@@ -749,7 +749,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
             marcador="Catcher: zuuk.pw"; print marcador
             name=re.compile("<iframe src='http://www.zuuk.pw(.+?)'").findall(link)[0]
             descobrirresolver('http://www.zuuk.pw' + name,nomecanal,False,zapping,nomeserver)
-        
+
         elif re.search("zuuk.net",link):
             marcador="Catcher: zuuk outro"; print marcador
             #stolen zuuk patch
@@ -760,12 +760,12 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
             ##
             if re.search('<script type="text/javascript">//var urls = new Array',link): url_final=re.compile('new Array.+?"(.+?)",').findall(link)[0]
             ##derbie##
-            
+
             else:
                 try:name=re.compile('<iframe.+?src="http://(.+?)zuuk.net/(.+?)"').findall(link)[0]
                 except:name=re.compile("""setTimeout\("window.open\('http://(.+?)zuuk.net/(.+?)'""").findall(link)[0]
                 url_final="http://%szuuk.net/%s" % (name[0],name[1])
-            
+
             link=abrir_url_cookie(url_final)
             link=limparcomentarioshtml(link,url_frame)
             try:
@@ -797,7 +797,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
                 ptcanal=ptcanal + '&'
                 descobrirresolver(ptcanal,nomecanal,ptcanal,zapping,nomeserver)
             elif re.search('rtmp://live.2caster.com',ptcanal):
-                descobrirresolver(ptcanal,nomecanal,ptcanal,zapping,nomeserver)           
+                descobrirresolver(ptcanal,nomecanal,ptcanal,zapping,nomeserver)
             else:
                 html=urllib.unquote(abrir_url(ptcanal))
                 descobrirresolver(ptcanal,nomecanal,html,zapping,nomeserver)
@@ -807,12 +807,12 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
             link=clean(link)
             #embed=re.compile('<br/><iframe.+?src="(.+?)" id="innerIframe"').findall(link)[0]
             embed=re.compile('<iframe[^<]+?src="([^"]+?)" id="innerIframe"').findall(link)[0]
-            ref_data = {'Referer': url_frame,'User-Agent':user_agent}            
+            ref_data = {'Referer': url_frame,'User-Agent':user_agent}
             urlembed=TVCoresURL + embed
             urlembed=urlembed.replace('http://tvfree.mehttp://antena.tvfree2.me/','http://antena.tvfree2.me/')
             html = abrir_url_tommy(urlembed,ref_data)
             descobrirresolver(urlembed,nomecanal,html,zapping,nomeserver)
-            
+
 
         #### ALIVE REMOVER DEPOIS ####
 
@@ -838,7 +838,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
             except: rtmp=re.compile('file=(.+?)&amp;').findall(link)[0]
             try:swf=re.compile('type="application/x-shockwave-flash" class=".+?" src="(.+?)"').findall(link)[0]
             except:swf=re.compile('src="([^"]+?)" class=".+?" type="application/x-shockwave-flash"').findall(link)[0]
-            
+
             streamurl=rtmp + ' swfUrl=' + swf + ' live=true timeout=15 swfVfy=1 pageUrl=http://www.04stream.com'
             comecarvideo(streamurl,nomecanal,True,zapping)
 
@@ -846,7 +846,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
         elif re.search('720Cast',link) or re.search('ilive',link):
             marcador="Catcher: ilive"; print marcador
             setecast=re.compile("fid='(.+?)';.+?></script>").findall(link)
-            
+
             if not setecast: setecast=re.compile('file: ".+?/app/(.+?)/.+?",').findall(link)
             if not setecast: setecast=re.compile('flashvars="file=(.+?)&').findall(link)
             if not setecast: setecast=re.compile('src="/ilive.tv.php.+?id=(.+?)" id="innerIframe"').findall(link)
@@ -859,7 +859,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
                 if '<script language=javascript>c="' in html:
                     from resources.lib import ioncube
                     html=ioncube.ioncube1(html)
-                    
+
                 tempomili=str(millis())
                 urltoken=re.compile(""".*getJSON\("([^'"]+)".*""").findall(html)[0] + '&_='+ tempomili
                 urltoken2= abrir_url_tommy(urltoken,ref_data)
@@ -884,8 +884,8 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
             #else:
             #    swf=re.compile('<param name="src" value="(.+?)\?').findall(link)[0]
             #    streamurl=filep.replace('rtmp://live.2caster.com/live/','http://live.2caster.com:1935/live/') + '/playplist.m3u8'
-        
-            
+
+
             comecarvideo(streamurl,nomecanal,True,zapping)
 
         elif re.search('9stream',link):
@@ -906,7 +906,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
                 tempomili=str(millis())
                 urltoken=re.compile(""".*getJSON\("([^'"]+)".*""").findall(html)[0] + '&_='+ tempomili
                 urltoken2= abrir_url_tommy(urltoken,ref_data)
-                
+
                 token=re.compile('"token":"(.+?)"').findall(urltoken2)[0]
                 try:rtmp=re.compile("""'streamer': "(.+?)",""").findall(html)[0].replace('\\','')
                 except:rtmp=re.compile('streamer: "(.+?)",').findall(html)[0].replace('\\','')
@@ -917,7 +917,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
                 app=re.compile('rtmp://[\.\w:]*/([^\s]+)').findall(rtmp)[0]
                 streamurl=rtmp + ' app=' + app+' playPath=' + filelocation + ' swfUrl=' + swf + ' token='+ token +' swfVfy=1 live=1 timeout=15 pageUrl=' + embed
                 comecarvideo(streamurl,nomecanal,True,zapping)
-                
+
         elif re.search('abcast', link):
             marcador="Catcher: abcast"; print marcador
             flex=re.compile("file='(.+?)';.+?></script>").findall(link)
@@ -984,7 +984,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
                 streamurl=rtmp.replace(chid,'') + ' playPath='+chid+' swfUrl=' + swf + ' live=true swfVfy=true pageUrl=' + url_frame
             else: streamurl=rtmp + '|User-agent=Mozilla%2F5.0%20(Linux%3B%20Android%205.0.1%3B%20Nexus%20)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F38.0.1847.114%20Mobile%20Safari%2F537.36'
             comecarvideo(streamurl,nomecanal,True,zapping)
-        
+
         elif re.search('cast3d', link): ##nao esta
             marcador="Catcher: cast3d"; print marcador
             cast3d=re.compile('fid="(.+?)";.+?></script>').findall(link)
@@ -1150,7 +1150,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
                 except:rtmp=re.compile("'streamer', '(.+?)'").findall(html)[0]
                 streamurl=rtmp + ' playPath=' + playp + ' swfUrl=' + swf + ' live=true timeout=15 swfVfy=1 pageUrl=' + embed
                 comecarvideo(streamurl,nomecanal,True,zapping)
-            
+
         elif re.search('flashtv.co', link):
             marcador="Catcher: flashtv.co"; print marcador
             stream4u=re.compile("fid='(.+?)';.+?></script>").findall(link)
@@ -1229,7 +1229,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
             filep=re.compile("'file', '(.+?)'").findall(html)[0]
             streamurl=rtmp + ' playPath=' + filep + ' swfUrl=http://freetvcast.pw/' + swf + ' live=true timeout=15 swfVfy=1 pageUrl=' + embed
             comecarvideo(streamurl,nomecanal,True,zapping)
-        
+
         elif re.search('goodcast.me', link):
             marcador="Catcher: goodcast.me"; print marcador
             stream4u=re.compile("id='(.+?)';.+?></script>").findall(link)
@@ -1496,13 +1496,13 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
                     micast=[]
                     micast.append(url_frame.replace('http://micast.tv/gens2.php?ch=',''))
                     baseurl='http://micast.tv/gens2.php?ch='
-                
+
             for chname in micast:
                 #embed=redirect(baseurl+chname)
                 embed=redirect('http://micast.tv/gens2.php?ch=cocoeranheta')
                 link=abrir_url(embed)
                 if re.search('refresh',link):
-                    chname=re.compile('refresh" content="0; url=http://micast.tv/gen.php.+?ch=(.+?)"').findall(link)[0]                
+                    chname=re.compile('refresh" content="0; url=http://micast.tv/gen.php.+?ch=(.+?)"').findall(link)[0]
                     link=abrir_url('http://micast.tv/gen5.php?ch='+chname)
                 try:
                     final=re.compile('file=(.+?)&amp;streamer=(.+?)&amp').findall(link)[0]
@@ -1533,7 +1533,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
                         streamurl=final[1] + ' playPath=' + final[0] + ' swfUrl=http://files.mica.st/player.swf live=true timeout=15 swfVfy=1 pageUrl=http://micast.tv/gen.php?ch='+final[0]
                         comecarvideo(streamurl,nomecanal,True,zapping)
                 except: pass
-                
+
         elif re.search('mips', link):
             marcador="Catcher: mips"; print marcador
             mips=re.compile("channel='(.+?)',.+?></script>").findall(link)
@@ -1606,7 +1606,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
             if re.search('"status":"ok"',r.text):
                 streamurl=re.compile('"pt":{"hls":"(.+?)"').findall(r.text)[0].replace('\\','')
                 comecarvideo(streamurl,nomecanal,True,zapping)
-            
+
         elif re.search('privatecdn',link):
             marcador="Catcher: privatecdn"; print marcador
             privatecdn=re.compile('<script type="text/javascript">id="(.+?)"').findall(link)
@@ -1617,7 +1617,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
                 rtmp=rtmp.replace('/'+chid,'')
                 streamurl=rtmp + ' playPath='+chid + ' live=true swfUrl=http://player.longtailvideo.com/player.swf pageUrl='+embed
                 comecarvideo(streamurl,nomecanal,True,zapping)
-                
+
         elif re.search('putlive', link):
             marcador="Catcher: putlive"; print marcador
             putlivein=re.compile("<iframe.+?src='.+?.swf.+?file=(.+?)&.+?'.+?></iframe>").findall(link)
@@ -1632,10 +1632,10 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
             marcador="Catcher: livesoccerhd stolen sptvhd"; print marcador
             ups=re.compile('<iframe.+?src="(.+?)"').findall(link)[0]
             descobrirresolver(ups,nomecanal,False,zapping,nomeserver)
-        
+
         elif re.search('ptcanal', link):
             marcador="Catcher: ptcanal"; print marcador
-            
+
             try:
                 link=link.replace('content="setTimeout,','<p><script language="JavaScript">setTimeout')
                 #descobrirresolver(url_frame,nomecanal,link,zapping,nomeserver)
@@ -1643,7 +1643,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
             except:
                 try:ptcanal=re.compile('<p><iframe src="(.+?)"').findall(link)[0]
                 except:ptcanal=re.compile("""setTimeout\("window.open\('([^"]+?)'""").findall(link)[0]
-                
+
             descobrirresolver(ptcanal,nomecanal,False,zapping,nomeserver)
 
         elif re.search('RTP Play - RTP</title>',link):
@@ -1684,19 +1684,19 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
                             filep=re.compile('file=(.+?)&').findall(link)[0]
                             try:swf=re.compile(" data='(.+?).swf\?").findall(link)[0] + '.swf'
                             except:swf=re.compile('src="(.+?)"').findall(link)[0]
-                            
+
                             streamurl=rtmp + ' playPath=' + filep + ' swfUrl=' + swf + ' swfVfy=1 live=1 pageUrl=http://tvzune.tv/'
                         except:
                             #embed=re.compile('<iframe src="/flashmedia.php\?channel=(.+?)" id="innerIframe"').findall(link)[0]
                             #ref_data = {'Referer': url_frame,'User-Agent':user_agent}
                             #embed=TVCoresURL + '/flashmedia.php?channel=' + embed
-                            
+
                             #html= urllib.unquote(abrir_url_tommy(embed,ref_data)).replace('//-->','.rtp.pt')
                             #descobrirresolver(embed,nomecanal,html,zapping,nomeserver)
                             streamurl=url_frame.replace('http://tvfree.me/jw-player.html?cid=','')
                             #comecarvideo(streamurl,nomecanal,True,zapping)
                             #return
-            #streamurl='rtmp://ec21.rtp.pt/livetv/ playPath=' + ficheiro + ' swfUrl=http://museu.rtp.pt/app/templates/templates/swf/pluginplayer.swf live=true timeout=15 pageUrl=http://www.rtp.pt/'            
+            #streamurl='rtmp://ec21.rtp.pt/livetv/ playPath=' + ficheiro + ' swfUrl=http://museu.rtp.pt/app/templates/templates/swf/pluginplayer.swf live=true timeout=15 pageUrl=http://www.rtp.pt/'
             comecarvideo(streamurl , nomecanal,True,zapping)
 
         elif re.search('meocanaltv.com/embed',link) or re.search('http://ow.ly/Fv4mL',link): #tvgente/tvdesporto
@@ -1710,7 +1710,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
                 html+=abrir_url_tommy(re.compile('src="([^"]+?)embedsecure.js"').findall(html)[0] + 'embedsecure.js',ref_data).decode('string-escape')
             descobrirresolver(meotv,nomecanal,html,zapping,nomeserver)
 
-        elif re.search('=myStream.sdp',link): 
+        elif re.search('=myStream.sdp',link):
             marcador="Catcher: other rtp"; print marcador
             try:
                 rtmpendereco=re.compile('streamer=(.+?)&').findall(link)[0]
@@ -1719,7 +1719,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
             except:
                 rtmpendereco=re.compile('file=(.+?)&').findall(link)[0]
                 filepath=re.compile(';id=(.+?)&').findall(link)[0]
-            
+
             swf="http://player.longtailvideo.com/player.swf"
             streamurl=rtmpendereco + ' playPath=' + filepath + ' swfUrl=' + swf + ' live=1 timeout=15 pageUrl=' + url_frame
             comecarvideo(streamurl,nomecanal,True,zapping)
@@ -1765,7 +1765,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
                             if activado==False: mensagemok('TV Portuguesa','Não e possível carregar stream.')
                             return
             comecarvideo(streamurl, nomecanal,True,zapping)
-            
+
         elif re.search('sharecast',link):
             marcador="Catcher: sharecast"; print marcador
             share=re.compile('src="http://sharecast.to/embed/(.+?)"></iframe>').findall(link)
@@ -1784,13 +1784,13 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
                 except:
                     rtmp= re.compile('file: "(.+?)",').findall(html)[0]
                     conteudo=rtmp
-                
+
                 streamurl= conteudo + ' live=true pageUrl=' + embed
                 comecarvideo(streamurl,nomecanal,True,zapping)
 
         elif re.search('surfline',link):
             marcador="Catcher: surfline"; print marcador
-            idcam=re.compile('spotid = (.+?),').findall(link)[0]            
+            idcam=re.compile('spotid = (.+?),').findall(link)[0]
             streaminfo=abrir_url('http://api.surfline.com/v1/syndication/cam/'+idcam).replace('\\','')
             if re.search('"camStatus":"down"',streaminfo):
                 if activado==False: mensagemok('TV Portuguesa','Stream está offline.')
@@ -1852,7 +1852,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
                     html= abrir_url_tommy(embed,ref_data).encode('ascii','ignore').decode('utf-8')
                     swf='http://www.streamcasttv.biz/embed/jwplayer/jwplayer.flash.swf'
                 else: extra=False
-                
+
                 rtmp=re.compile("file: '(.+?)'").findall(html)[0]
                 if extra==True: chid=''.join((rtmp.split('/'))[-1:]).replace('.smil','')
                 rtmp='/'.join((rtmp.split('/'))[:-1]) + '/'
@@ -1914,10 +1914,10 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
                 try:streamurl=re.compile("""<source src="([^"]+?)" type='rtmp/mp4'>""").findall(link)[0]
                 except:streamurl=re.compile('<source src="([^"]+?)" type="application/x-mpegURL">').findall(link)[0]
                 comecarvideo(streamurl,nomecanal,True,zapping)
-            except:                
+            except:
                 if activado==False: mensagemok('TV Portuguesa','Stream está offline.')
                 return
-            
+
 
         elif re.search('telewizja',link) or re.search('sapo.tv.php',link):
             marcador="Catcher: telewizja or sapo.tv"; print marcador
@@ -1950,7 +1950,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
             marcador="Catcher: tvtuga hls stolen streams"; print marcador
             streamurl=re.compile('file=(.+?)&').findall(link)[0]
             comecarvideo(streamurl,nomecanal,True,zapping)
-            
+
         elif re.search('streamago',link):
             marcador="Catcher: streamago"; print marcador
             flive=re.compile('<iframe src="http://www.streamago.tv/iframe/(.+?)/"').findall(link)
@@ -1978,7 +1978,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
             ref_data = {'Referer': url_frame,'User-Agent':user_agent}
             html= abrir_url_tommy(urlredirect,ref_data)
             descobrirresolver(urlredirect,nomecanal,html,zapping,nomeserver)
-                
+
         elif re.search('tv-msn',link):
             marcador="Catcher: tv-msn"; print marcador
             if re.search('cdnbr.biz',link):
@@ -1992,7 +1992,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
 
             variaveis=re.compile("file=(.+?).flv&streamer=(.+?)&").findall(link)[0]
             streamurl=variaveis[1] + ' playPath=' + variaveis[0]  + ' swfUrl='+swf+' live=true timeout=15 swfVfy=1 pageUrl='+url_frame
-            
+
             comecarvideo(streamurl,nomecanal,True,zapping)
 
         elif re.search('tvph.googlecode.com',link):
@@ -2004,7 +2004,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
             else:
                 streamurl=re.compile("cid=(.+?)'").findall(link)[0]
             comecarvideo(streamurl,nomecanal,True,zapping)
-            
+
 
         elif re.search('TV ZUNE PLAYER 201',link):
             marcador="Catcher: player tvzune soft"; print marcador
@@ -2019,11 +2019,11 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
 
             ref_data = {'Accept': 'image/jpeg, application/x-ms-application, image/gif, application/xaml+xml, image/pjpeg, application/x-ms-xbap, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, */*','User-Agent':'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Trident/7.0; .NET4.0E; .NET4.0C; InfoPath.3; .NET CLR 3.5.30729; .NET CLR 2.0.50727; .NET CLR 3.0.30729)','Host': 'fire.tvzune.org','Connection': 'Keep-Alive'}
             nada= abrir_url_tommy(nada,ref_data)
-            
+
             swf=re.compile('src="(.+?)"').findall(link)[0]
             streamurl=rtmp + ' playPath=' + filep + ' swfUrl=' + swf + ' swfVfy=1 live=1 pageUrl=' + html
             comecarvideo(streamurl,nomecanal,True,zapping)
-            
+
         elif re.search('player_tvzune',link):
             marcador="Catcher: player tvzune"; print marcador
             yoyo412=re.compile(yoyo115 + ' "(.+?)"').findall(link)[0]
@@ -2034,7 +2034,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
             yoyo378='/'.join((yoyo428.split('/'))[:-1]) + '/' + yoyo683
             streamurl=yoyo721 + ' playPath=' + yoyo412.split('/')[-1] + ' swfUrl=' +yoyo378 +' live=true pageUrl=' + url_frame
             comecarvideo(streamurl,nomecanal,True,zapping)
-            
+
 
         elif re.search('stream4u', link):
             marcador="Catcher: stream4u"; print marcador
@@ -2052,7 +2052,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
             marcador="Catcher: tvi oficial"; print marcador
             streamurl=re.compile('file: "(.+?)"').findall(link)[0]
             comecarvideo(streamurl,nomecanal,True,zapping)
-            
+
         elif re.search('ukcast.co', link):
             marcador="Catcher: ukcast.co"; print marcador
             stream4u=re.compile('ukcast.co/.+?u=(.+?)&').findall(link)
@@ -2115,7 +2115,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
             filep=re.compile("'file', '(.+?)'").findall(html)[0]
             streamurl=streamurl=rtmp + ' playPath=' + filep + ' swfUrl=http://vercosasgratis.com/' + swf + ' live=true timeout=15 swfVfy=1 pageUrl=' + embed
             comecarvideo(streamurl,nomecanal,True,zapping)
-            
+
         elif re.search('veetle',url_frame) or re.search("src='http://veetle",link) or re.search('src="http://veetle',link):
             marcador="Catcher: veetle"; print marcador
             if activado==False:
@@ -2148,7 +2148,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
                                 else: frame=framedupla[1]
                             descobrirresolver(frame, nomecanal,False,False,nomeserver)
                             return
-                    
+
                     try:idembed=re.compile('/index.php/widget/index/(.+?)/').findall(link)[0]
                     except: idembed=re.compile('/index.php/widget#(.+?)/true/16:').findall(link)[0]
                     print "ID embed: " + idembed
@@ -2264,7 +2264,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
             if source:
                 streamurl=source.resolve()
                 comecarvideo(streamurl,nomecanal,True,zapping)
-                    
+
         elif re.search('yocast', link):
             marcador="Catcher: yocast"; print marcador
             stream4u=re.compile("fid='(.+?)';.+?></script>").findall(link)
@@ -2318,7 +2318,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
                 servertmp= abrir_url_tommy('http://yukons.net/srvload/'+ idrtmp,ref_data).replace('srv=','')
                 streamurl='rtmp://' + servertmp + ':443/kuyo playPath=' + chname + '?id=' + idrtmp + '&pid=' + pidrtmp + ' swfUrl=http://yukons.net/'+swfrtmp + '.swf live=true conn=S:OK timeout=14 swfVfy=true ccommand=trxuwaaLahRKnaechb;TRUE;TRUE pageUrl=' + embed
                 comecarvideo(streamurl,nomecanal,True,zapping)
-                
+
         elif re.search('wowcast.tv', link):
             marcador="Catcher: wowcast"; print marcador
             stream4u=re.compile('fid="(.+?)";.+?></script>').findall(link)
@@ -2326,7 +2326,7 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
                 embed='http://www.wowcast.tv/embed.php?stream='+chid+'&vw=650&vh=400'
                 ref_data = {'Referer': url_frame,'User-Agent':user_agent}
                 html= abrir_url_tommy(embed,ref_data)
-                
+
                 swf=re.compile('SWFObject\("(.+?)"').findall(html)[0]
                 rtmp=re.compile('"streamer", "(.+?)"').findall(html)[0]
                 streamurl=rtmp + ' playPath=' + chid + ' swfUrl=' + swf + ' live=true timeout=15 swfVfy=1 pageUrl=' + embed
@@ -2491,7 +2491,7 @@ def praias():
     beachcams=[]
     try:
         temp=abrir_url(BeachcamURL + 'pt/livecams/')
-        beachcams=re.compile('<a href="/pt/livecams/(.+?)">(.+?)</a>').findall(temp)    
+        beachcams=re.compile('<a href="/pt/livecams/(.+?)">(.+?)</a>').findall(temp)
     except: print "Nao foi possivel obter as BeachCams"
     try:
         temp=abrir_url(SurflineURL + '/surf-report/portugal_2946/map/')
@@ -2514,7 +2514,7 @@ def praias():
             end=BeachcamURL + 'pt/livecams/' + end
             nome= '[B]%s[/B] (Beachcam.pt)' % nome
         addDir(nome,end,27,tvporpath + art + 'versao-ver2.png',len(beachcams),'',False)
-    
+
 ### PROGRAMACAO ####
 
 def p_todos():
@@ -2522,11 +2522,11 @@ def p_todos():
     else:
         try:
             dia=horaportuguesa(True)
-            
+
             listacanais='RTP1,RTP2,SIC,TVI,SPTV1,SPTV2,SPTV3,SPTV4,SPTV5,SLB,SLB2,PORTO,CMTV,RTPIN,SICK,SICM,SICN,SICR,TVI24,TVIFIC,HOLLW,AXN,AXNBL,AXNWH,FOX,FOXCR,FLIFE,FOXM,SYFY,DISNY,PANDA,MOTOR,DISCV,ODISS,HIST,NGC,EURSP,FASH,VH1,MTV,ABOLA,RTPAC,RTPA,RTPM,RTPMD,BIGGS,ETVHD,DISNYJ,CHELS,CAÇAP,TOROTV,DISCT,GLOBO,TVREC,EURS2,SCP,TPA,EURN,ARTV,TRACE'
             url='http://services.sapo.pt/EPG/GetChannelListByDateInterval?channelSiglas='+listacanais+'&startDate=' + dia +':01&endDate='+ dia + ':02'
             link=clean(abrir_url(url,erro=False))
-            
+
             listas=re.compile('<Sigla>(.+?)</Sigla>.+?<Title>(.+?)</Title>.+?<Description>(.+?)</Description>').findall(link)
             canais={}
             for nomecanal, nomeprog, descricao in listas:
@@ -2558,7 +2558,7 @@ def programacao_canal():
         else: dia='Amanhã'
         titles.append('\n[B][COLOR blue]%s %s:%s[/COLOR][/B] - [B][COLOR gold]%s[/COLOR][/B] - %s' % (dia,horas,minutos,nomeprog,descprog))
     programacao='\n'.join(titles)
-    
+
     try:
         xbmc.executebuiltin("ActivateWindow(10147)")
         window = xbmcgui.Window(10147)
@@ -2631,7 +2631,7 @@ def radiosobterurlstream(name,url):
                 #rtmp=rtmp.replace('rtmp://195.23.102.206','rtmp://195.23.102.209') #tempfix
                 rtmp=rtmp.replace(':1936','') #tempfix
                 endereco=rtmp + ' playPath=' + endereco
-                
+
         except:endereco=False
         if not endereco:
             try:endereco=re.compile('<param name="URL" value="(.+?)"').findall(link)[0]
@@ -2643,7 +2643,7 @@ def radiosobterurlstream(name,url):
             xbmc.executebuiltin("XBMC.Notification(TV Portuguesa,Não é possível ouvir esta rádio.,'500000',)")
             mensagemprogresso.close()
             return
-        
+
         try:thumbnail=re.compile('<img id="station-logo-player" src="(.+?)"').findall(link)[0]
         except: thumbnail=''
         if re.search('.asx',endereco):
@@ -2696,7 +2696,7 @@ class lolbaza(xbmcgui.WindowXMLDialog):
 
     def onInit(self):
         pass
-          
+
     def onClick(self,controlId):
         if controlId == 2001: self.close()
 
@@ -2742,7 +2742,7 @@ class menulateral(xbmcgui.WindowXMLDialog):
             self.close()
             request_servidores('',nomecanal)
 
-        
+
         #else:
         #    self.buttonClicked = controlId
         #    self.close()
@@ -2766,7 +2766,7 @@ class menulateral(xbmcgui.WindowXMLDialog):
                 item.setProperty('idx', str(idx))
                 item.setProperty('chname', '[B]' + nomecanal + '[/B]')
                 listControl.addItem(item)
-        
+
     def updateListItem(self, idx, item):
         channel = self.channelList[idx]
         item.setLabel('%3d. %s' % (idx+1, channel.title))
@@ -2815,7 +2815,7 @@ def listascanais():
     if selfAddon.getSetting("listasextra") == "true":
         try:listasextras()
         except:pass
-    
+
     addDir("[B][COLOR white]A tua lista aqui?[/COLOR][/B]",'nada',14,tvporpath + art + 'versao-ver2.png',1,'',False)
     #xbmc.executebuiltin("Container.SetViewMode(500)")
 
@@ -2831,7 +2831,7 @@ def listasextras():
 def parseM3U(infile,link=False):
     if link==False: inf=abrir_url(infile).splitlines( )
     else: inf=link.splitlines( )
-    
+
     playlist=[]
     musica=[]
     titulo=''
@@ -2841,7 +2841,7 @@ def parseM3U(infile,link=False):
         if line.startswith('#EXTINF:'):
             #stupid guys with spaces and common errors
             try:titulo=line.split('#EXTINF:')[1].split(',  ',1)[1]
-            except:                
+            except:
                 try:titulo=line.split('#EXTINF:')[1].split(', ',1)[1]
                 except:
                     try:titulo=line.split('#EXTINF:')[1].split(',',1)[1]
@@ -2858,10 +2858,10 @@ def parseM3U(infile,link=False):
             musica=[]
             titulo=''
             urlstream=''
-            
+
 
     return playlist
-    
+
 def obter_lista(name,url):
     GA("None",name)
     titles = []; ligacao = []; thumb=[]
@@ -2878,13 +2878,13 @@ def obter_lista(name,url):
         else:
             streams2=[]
             streams2.append(streams)#ugly
-            
+
         for rtmp in streams2:
 #            if re.search('$doregex',rtmp):
 #                #parametros=re.compile('<regex></regex>').findall(rtmp)
 #                doRegexs = re.compile('\$doregex\[([^\]]*)\]').findall(rtmp)
 #                    for k in doRegexs:
-#                    
+#
 #                        if k in regexs:
 #                            m = regexs[k]
 #                            #if m['page'] in cachedPages:
@@ -2902,7 +2902,7 @@ def obter_lista(name,url):
 #                            expres=re.compile("""<expres>'file':'([^']*)<expres>""").findall(streams2)[0]
 #                            reg = re.compile(expres).search(link)
 #                            rtmp = url.replace("$doregex[" + k + "]", reg.group(1).strip())
-                        
+
 
             if name=='[B][COLOR white]Eventos[/COLOR][/B] (Cesarix/Rominhos)':
                 titles.append(nomecanal)
@@ -2912,7 +2912,7 @@ def obter_lista(name,url):
                 addCanal(nomecanal,rtmp,17,thumbcanal,len(listas),'')
                 xbmcplugin.setContent(int(sys.argv[1]), 'Movies')
 
-                    
+
     if name=='[B][COLOR white]Eventos[/COLOR][/B] (Cesarix/Rominhos)':
         if len(ligacao)==0: ok=mensagemok('TV Portuguesa', 'Sem eventos disponiveis.'); return
         else:
@@ -2958,7 +2958,7 @@ def comecarvideo2(finalurl,name,directo,zapping,thumb=''):
         else:
             #finalurl,spscpid=libalternativo(finalurl)
             spscpid='nada'
-        
+
         playlist = xbmc.PlayList(1)
         playlist.clear()
         listitem.setInfo("Video", {"Title":name})
@@ -2971,7 +2971,7 @@ def comecarvideo2(finalurl,name,directo,zapping,thumb=''):
         dialogWait.create('TV Portuguesa', 'A carregar...')
         dialogWait.close()
         del dialogWait
-        
+
         player = Player(finalurl=finalurl,name=name,siglacanal=siglacanal,directo=directo,spscpid=spscpid)
         if "RunPlugin" in finalurl:
             xbmc.executebuiltin(finalurl)
@@ -2979,7 +2979,7 @@ def comecarvideo2(finalurl,name,directo,zapping,thumb=''):
 
             player.play(playlist)
             lat123 = menulateral("menulateral.xml" , tvporpath, "Default",finalurl=finalurl,name=name,siglacanal=siglacanal,directo=directo)
-        
+
             while player.is_active:
                 if listacanaison == "true":
                     if xbmc.getCondVisibility('Window.IsActive(videoosd)') and directo==True:
@@ -2987,11 +2987,11 @@ def comecarvideo2(finalurl,name,directo,zapping,thumb=''):
                         lat123.doModal()
                         while xbmc.getCondVisibility('Window.IsActive(videoosd)'): pass
                 player.sleep(1000)
-            
+
             #if not player.is_active:
             #    print "Parou. Saiu do ciclo."
             #    sys.exit(0)
-                
+
                 #player.sleep(10000)
             #print "ERRO"
 
@@ -3015,7 +3015,7 @@ class Player(xbmc.Player):
 
       def onPlayBackStarted(self):
             print "Comecou o player"
-                              
+
       def onPlayBackStopped(self):
             print "Parou o player"
             self.is_active = False
@@ -3023,14 +3023,14 @@ class Player(xbmc.Player):
             #import newrtmp
             #newrtmp.stop_stream(self._spscpid)
             #opcao= xbmcgui.Dialog().yesno("TV Portuguesa", "Este stream funciona? ", "(exemplificação / ainda não funciona)", "",'Sim', 'Não')
-            ###### PERGUNTAR SE O STREAM E BOM #####            
+            ###### PERGUNTAR SE O STREAM E BOM #####
 
-      def onPlayBackEnded(self):              
+      def onPlayBackEnded(self):
             self.onPlayBackStopped()
             print 'Chegou ao fim. Playback terminou.'
 
 
-      def sleep(self, s): xbmc.sleep(s) 
+      def sleep(self, s): xbmc.sleep(s)
 
 class PlaybackFailed(Exception):
       '''XBMC falhou a carregar o stream'''
@@ -3073,7 +3073,7 @@ def verifica_so(args,nomecanal,siglacanal,directo):
                 basescript='#!/bin/sh\nexport LD_LIBRARY_PATH="%s"\n' % (pasta)
                 correrdump(args,nomecanal,'gravador-linux86',siglacanal,directo,script=basescript)
     else: correrdump(args,nomecanal,'alternativo',siglacanal,directo)
-        
+
 def correrdump(args,nomecanal,pathso,siglacanal,directo,script=False):
     import subprocess
     from datetime import timedelta
@@ -3108,7 +3108,7 @@ def correrdump(args,nomecanal,pathso,siglacanal,directo,script=False):
 
         if pathso=='alternativo': caminhodump=selfAddon.getSetting("rtmpdumpalternativo")
         else: caminhodump=os.path.join(gravadorpath,pathso)
-        
+
         if xbmc.getCondVisibility('system.platform.linux'):
             st = os.stat(caminhodump)
             os.chmod(caminhodump, st.st_mode | stat.S_IEXEC)
@@ -3203,7 +3203,7 @@ def calculafinalprograma(link):
     return segundos
 
 ### TESTES ###
-    
+
 def libalternativo(finalurl):
     if xbmc.getCondVisibility('system.platform.windows'):
         import newrtmp
@@ -3247,7 +3247,7 @@ def abrir_url_cookie(url,erro=True,forcedns=False):
         else:
             from resources.lib import dnsrequest
             content=dnsrequest.request(url)
-            return content            
+            return content
     except urllib2.HTTPError, e:
         if erro==True and activado==False:
             host='http://' + url.split('/')[2]
@@ -3296,10 +3296,10 @@ class JsUnpacker:
     def unpackAll(self, data):
         sPattern = '(eval\(function\(p,a,c,k,e,d\)\{while.*?)\s*</script>'
         return re.sub(sPattern, lambda match: self.unpack(match.group(1)), data)
-    
+
     def containsPacked(self, data):
         return 'p,a,c,k,e,d' in data
-        
+
     def unpack(self, sJavascript):
         aSplit = sJavascript.split(";',")
         p = str(aSplit[0])
@@ -3311,14 +3311,14 @@ class JsUnpacker:
         d = ''
         sUnpacked = str(self.__unpack(p, a, c, k, e, d))
         return sUnpacked.replace('\\', '')
-    
+
     def __unpack(self, p, a, c, k, e, d):
         while (c > 1):
             c = c -1
             if (k[c]):
                 p = re.sub('\\b' + str(self.__itoa(c, a)) +'\\b', k[c], p)
         return p
-    
+
     def __itoa(self, num, radix):
         result = ""
         while num > 0:
@@ -3343,22 +3343,22 @@ class JsUnpackerV2:
                 unpack_val=self.unpack(enc_val)
                 in_data=in_data.replace(enc_val,unpack_val)
             return in_data
-        except: 
+        except:
             traceback.print_exc(file=sys.stdout)
             return data
-        
-        
+
+
     def containsPacked(self, data):
         return 'p,a,c,k,e,d' in data or 'p,a,c,k,e,r' in data
-        
+
     def unpack(self,sJavascript,iteration=1, totaliterations=1  ):
 
         aSplit = sJavascript.split("rn p}('")
 
         p1,a1,c1,k1=('','0','0','')
-        ss="p1,a1,c1,k1=(\'"+aSplit[1].split(".spli")[0]+')' 
+        ss="p1,a1,c1,k1=(\'"+aSplit[1].split(".spli")[0]+')'
         exec(ss)
-        
+
         k1=k1.split('|')
         aSplit = aSplit[1].split("))'")
         e = ''
@@ -3385,9 +3385,9 @@ class JsUnpackerV2:
             result = "0123456789abcdefghijklmnopqrstuvwxyz"[num % radix] + result
             num /= radix
         return result
-        
+
     def __itoaNew(self,cc, a):
-        aa="" if cc < a else self.__itoaNew(int(cc / a),a) 
+        aa="" if cc < a else self.__itoaNew(int(cc / a),a)
         cc = (cc % a)
         bb=chr(cc + 29) if cc> 35 else str(self.__itoa(cc,36))
         return aa+bb
@@ -3397,7 +3397,7 @@ def savefile(filename, contents,pastafinal=pastaperfil):
     try:
         destination = os.path.join(pastafinal,filename)
         fh = open(destination, 'wb')
-        fh.write(contents)  
+        fh.write(contents)
         fh.close()
     except: print "Nao gravou os temporarios de: %s" % filename
 
@@ -3428,7 +3428,7 @@ def vista_canais():
       elif menuview == "2": xbmc.executebuiltin("Container.SetViewMode(50)")#lista
       elif menuview == "3": xbmc.executebuiltin("Container.SetViewMode(51)")#lista grande
 
-def versao_disponivel():            
+def versao_disponivel():
     try:
         link=abrir_url('http://fightnight-xbmc.googlecode.com/svn/addons/fightnight/plugin.video.tvpor/addon.xml')
         match=re.compile('name="TV Portuguesa"\r\n       version="(.+?)"\r\n       provider-name="fightnight">').findall(link)[0]
@@ -3503,7 +3503,7 @@ def extract(_in,_out,dp=None,type='all'):
             return allWithProgress(_in, _out, dp)
 
         return allNoProgress(_in, _out)
-            
+
     elif type=='allNoProgress':
         try:
             zin = zipfile.ZipFile(_in, 'r')
@@ -3562,19 +3562,19 @@ def downloader(url,dest, mensagem="A fazer download...",useReq = False):
         size    = content / 100
         total   = 0
         while True:
-            if dp.iscanceled(): 
-                raise Exception("Canceled")                
+            if dp.iscanceled():
+                raise Exception("Canceled")
                 dp.close()
 
             chunk = resp.read(size)
-            if not chunk:            
+            if not chunk:
                 f.close()
                 break
 
             f.write(chunk)
             total += len(chunk)
             percent = min(100 * total / content, 100)
-            dp.update(percent)       
+            dp.update(percent)
     else:
         urllib.urlretrieve(url,dest,lambda nb, bs, fs, url=url: _pbhook(nb,bs,fs,url,dp))
 
@@ -3585,7 +3585,7 @@ def _pbhook(numblocks, blocksize, filesize, url=None,dp=None):
     except:
         percent = 100
         dp.update(percent)
-    if dp.iscanceled(): 
+    if dp.iscanceled():
         raise Exception("Canceled")
         dp.close()
 
@@ -3606,17 +3606,17 @@ def checkGA():
     doUpdate = (nDays > 0) or (nSecs > threshold)
     if not doUpdate: return
     selfAddon.setSetting('ga_time', str(now).split('.')[0])
-    APP_LAUNCH()    
-    
-                    
+    APP_LAUNCH()
+
+
 def send_request_to_google_analytics(utm_url):
     try:
         req = urllib2.Request(utm_url, None,{'User-Agent':user_agent})
         response = urllib2.urlopen(req).read()
     except:
-        print ("GA fail: %s" % utm_url)         
+        print ("GA fail: %s" % utm_url)
     return response
-       
+
 def GA(group,name):
         try:
             try:
@@ -3643,7 +3643,7 @@ def GA(group,name):
                         print "============================ POSTING TRACK EVENT ============================"
                         send_request_to_google_analytics(utm_track)
                     except:
-                        print "============================  CANNOT POST TRACK EVENT ============================" 
+                        print "============================  CANNOT POST TRACK EVENT ============================"
             if name=="None":
                     utm_url = utm_gif_location + "?" + \
                             "utmwv=" + versao + \
@@ -3666,14 +3666,14 @@ def GA(group,name):
                                 "&utmp=" + quote(PATH+"/"+group+"/"+name) + \
                                 "&utmac=" + UATRACK + \
                                 "&utmcc=__utma=%s" % ".".join(["1", VISITOR, VISITOR, VISITOR, VISITOR,"2"])
-                                
+
             print "============================ POSTING ANALYTICS ============================"
             send_request_to_google_analytics(utm_url)
-            
+
         except:
-            print "================  CANNOT POST TO ANALYTICS  ================" 
-            
-            
+            print "================  CANNOT POST TO ANALYTICS  ================"
+
+
 def APP_LAUNCH():
         versionNumber = int(xbmc.getInfoLabel("System.BuildVersion" )[0:2])
         print versionNumber
@@ -3721,12 +3721,12 @@ def APP_LAUNCH():
         import platform
         VISITOR = selfAddon.getSetting('ga_visitor')
         for build, PLATFORM in match:
-            if re.search('12',build[0:2],re.IGNORECASE): 
-                build="Frodo" 
-            if re.search('11',build[0:2],re.IGNORECASE): 
-                build="Eden" 
-            if re.search('13',build[0:2],re.IGNORECASE): 
-                build="Gotham" 
+            if re.search('12',build[0:2],re.IGNORECASE):
+                build="Frodo"
+            if re.search('11',build[0:2],re.IGNORECASE):
+                build="Eden"
+            if re.search('13',build[0:2],re.IGNORECASE):
+                build="Gotham"
             print build
             print PLATFORM
             utm_gif_location = "http://www.google-analytics.com/__utm.gif"
@@ -3742,7 +3742,7 @@ def APP_LAUNCH():
                 print "============================ POSTING APP LAUNCH TRACK EVENT ============================"
                 send_request_to_google_analytics(utm_track)
             except:
-                print "============================  CANNOT POST APP LAUNCH TRACK EVENT ============================" 
+                print "============================  CANNOT POST APP LAUNCH TRACK EVENT ============================"
 
 ### PASTAS E AFINS ###
 
@@ -3758,7 +3758,7 @@ def get_params():
         for i in range(len(pairsofparams)):
             splitparams={}
             splitparams=pairsofparams[i].split('=')
-            if (len(splitparams))==2: param[splitparams[0]]=splitparams[1]                         
+            if (len(splitparams))==2: param[splitparams[0]]=splitparams[1]
     return param
 
 def addLink(name,url,iconimage):
@@ -3768,7 +3768,7 @@ def addLink(name,url,iconimage):
     try:
         if re.search('HD',name) or re.search('1080P',name) or re.search('720P',name):liz.addStreamInfo( 'video', { 'Codec': 'h264', 'width': 1280, 'height': 720 } )
         else: liz.addStreamInfo( 'video', { 'Codec': 'h264', 'width': 600, 'height': 300 } )
-    except: pass    
+    except: pass
     return xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=url,listitem=liz)
 
 def addCanal(name,url,mode,iconimage,total,descricao):
@@ -3848,5 +3848,5 @@ elif mode==29: firstrow()
 elif mode==30: request_servidores(url,name,gravador=True)
 elif mode==31: programacao_canal()
 elif mode==2013: testejanela()
-        
+
 xbmcplugin.endOfDirectory(int(sys.argv[1]))
