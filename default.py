@@ -8,7 +8,7 @@ from resources.lib.daring import *
 from resources.lib.net import Net
 net = Net()
 
-versao = '0.1.00'
+versao = '0.1.01'
 RadiosNacionaisURL = 'http://www.radioonline.com.pt'
 BeachcamURL = 'http://beachcam.sapo.pt/'
 CanalHDURL = 'http://canalhd.tv/tv/'
