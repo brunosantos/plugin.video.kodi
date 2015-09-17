@@ -2,6 +2,10 @@
 
 """ TV Tuga
     2015 bsan"""
+    
+    #have a look at http://www.tvgente.me/front.php
+    #ligacao.append('http://antena24.com/sic.php')   
+    #http://ptcanal.com/sic-online/   
 
 import xbmc, xbmcgui, xbmcaddon, xbmcplugin,re,sys, urllib, urllib2,time,datetime,os
 from resources.lib.daring import *
@@ -25,7 +29,7 @@ TVTugaURL = 'http://www.tvtuga.com'
 TugastreamURL = 'http://www.tugastream.com/'
 TVPTHDURL = 'http://www.tvportugalhd.eu'
 TVPTHDZuukURL = 'http://www.zuuk.pw'
-TVCoresURL = 'http://mytvfree.me/'
+TVCoresURL = 'http://mytvfree.me'
 LSHDURL= 'http://livesoccerhq.com'
 TVZuneURL = 'http://www.tvzune.tv/'
 TVZune2URL = 'http://soft.tvzune.co/'
@@ -51,6 +55,25 @@ downloadPath = selfAddon.getSetting('pastagravador')
 gravadorpath = os.path.join(selfAddon.getAddonInfo('path'),'resources','gravador')
 activadoextra=[]
 debug=[]
+
+REMOTE_DBG = False
+
+# append pydev remote debugger
+if REMOTE_DBG:
+    # Make pydev debugger works for auto reload.
+    # Note pydevd module need to be copied in XBMC\system\python\Lib\pysrc
+    try:
+        sys.path.append("D:\\Kodi\\eclipse-cpp-mars-R-win32-x86_64\\eclipse\\plugins\\org.python.pydev_4.3.0.201508182223\\pysrc")
+        import pydevd
+        #import pysrc.pydevd as pydevd # with the addon script.module.pydevd, only use `import pydevd`
+    # stdoutToServer and stderrToServer redirect stdout and stderr to eclipse console
+        pydevd.settrace('localhost', stdoutToServer=True, stderrToServer=True)
+        print('pydevd funcou')
+        #pydevd.settrace('localhost', port=5678, stdoutToServer=True, stderrToServer=True)
+    except ImportError:
+        sys.stderr.write("Error: " +
+            "You must add org.python.pydev.debug.pysrc to your PYTHONPATH.")
+        sys.exit(1)
 
 if not os.path.exists(tvporpath):
     tvporpath = tvporpath.decode('utf-8')
@@ -78,7 +101,7 @@ def canais():
     nrcanais=62
     canaison=[]
     empty='nada'
-    GA("None","listacanais")
+    #GA("None","listacanais")
     if selfAddon.getSetting("prog-lista3") == "true":
         mensagemprogresso.create('TV Portuguesa', 'A carregar listas de programação.','Por favor aguarde.')
         mensagemprogresso.update(0)
@@ -189,6 +212,8 @@ def info_servidores():
             tvgentelink= clean(abrir_url_cookie(TVGenteURL + '/front.php',erro=False))
             tvgentefinal='\n'.join(re.compile('onclick="window.open(.+?)/></a>').findall(tvgentelink))
             savefile('tvgente', tvgentefinal)
+            
+            #savefile('tvgente', tvgentelink)
         except: savefile('tvgente', '')
 
 def request_servidores(url,name,tamanho=0,gravador=False):
@@ -200,7 +225,7 @@ def request_servidores(url,name,tamanho=0,gravador=False):
     name=name.replace('[','-')
     nome=re.compile('B](.+?)/B]').findall(name)[0]
     nomega=nome.replace('-','')
-    GA("listacanais",nomega)
+    #GA("listacanais",nomega)
     titles=[]; ligacao=[]
 
     if url=='nada' and activado==True: todosact(nomelista)
@@ -346,7 +371,10 @@ def request_servidores(url,name,tamanho=0,gravador=False):
                         if len(tvacores)==1: tvacores2=str('')
                         else: tvacores2=' #' + str(tvacoresref)
                         titles.append('TV a Cores' + tvacores2)
+                        urlembed=TVCoresURL.replace('http://mytvfree.mehttp://antena.mytvfree.me','http://antena.mytvfree.me/')
                         ligacao.append(TVCoresURL + codigo)
+                        #ligacao.append('http://mytvfree.mehttp://antena.mytvfree.me/sic.php')
+                        #ligacao.append('http://antena24.com/sic.php')                        
             except: pass
 
         ########################################TUGASTREAM############################
@@ -366,30 +394,34 @@ def request_servidores(url,name,tamanho=0,gravador=False):
             except: pass
 
         ########################################TVGENTE############################
-        #if selfAddon.getSetting("fontes-tvgente") == "true":
-        #    try:
-        #        tvgenteref=int(0)
-        #        tvgentelink=openfile('tvgente')
-        #        nometvgente=nome.replace('SPORTTV 1-','sptv1novo.png').replace('SPORTTV 2-','sptv2novo.png').replace('SPORTTV 3-','sptv3novo.png').replace('SPORTTV 4-','jogooo.png').replace('SPORTTV 5-','sptv511.png').replace('Eurosport-','eurosportnovo.png').replace('Eurosport 2-','eurosport2novo.png').replace('ESPN-','espnnovo.png').replace('RTP 1-','1rtp.png').replace('RTP 2-','rtp2novo.png').replace('RTP Informação-','rtpinfonovo.png').replace('RTP Internacional-','rtp intnovo.png').replace('RTP Memória-','memoriartpnovo.png').replace('RTP Açores-','acoresnovortp.png').replace('RTP Madeira-','madeirartpnovo.png').replace('SIC-','sicnovo.png').replace('SIC Noticias-','sicnnovo.png').replace('TVI-','tvinovo.png').replace('TVI24-','tvi24novo.png').replace('Porto Canal-','portonovo.png').replace('Benfica TV 1-','btvnovo.png').replace('Benfica TV 2-','btvnovo.png').replace('Sporting TV-','sportingtv.png').replace('A Bola TV-','biolatv.png').replace('CM TV-','cmtv.png').replace('Económico TV-','ecnovo.png').replace('FOX-','foxnovo.png').replace('Discovery Channel-','discnovo.png').replace('História-','historia').replace('Casa dos Segredos 5-','casa do putedo1.jpg')
-        #        tvgente=re.compile("\('(.+?)'.+?<img.+?" +nometvgente + '"').findall(tvgentelink)
-        #        nometvgente=nome.replace('SPORTTV 1-','miga1.png').replace('SPORTTV 2-','miga2.png').replace('SPORTTV 3-','miga3.png').replace('SPORTTV 4-','miga 4.png').replace('SPORTTV 5-','miga5.png').replace('Benfica TV 1-','btv11.png').replace('Benfica TV 2-','btv11.png').replace('SIC Noticias-','hd1sic.png').replace('Sporting TV-','testesporting.png')
-        #        tvgente+=re.compile("\('(.+?)'.+?<img.+?" +nometvgente + '"').findall(tvgentelink)
-        #        if tvgente:
-        #            for codigo in tvgente:
-        #                tvgenteref=int(tvgenteref + 1)
-        #                if len(tvgente)==1: tvgente2=str('')
-        #                else: tvgente2=' #' + str(tvgenteref)
-        #                titles.append('TV Gente' + tvgente2)
-        #                ligacao.append(codigo)
-        #    except: pass
-
-        #if re.search('SPORTTV 1 HD',nomelista) or re.search('SPORTTV 1',nomelista):
-        #    titles.append('TVGO.be')
-        #    ligacao.append(TVGOURL)
-
-        #if re.search('SPORTTV 2',nomelista):
-        #    titles.append('TVGO.be')
-        #    ligacao.append(TVGOURL + 'sport2.html')
+        if selfAddon.getSetting("fontes-tvgente") == "true":
+            try:
+                tvgenteref=int(0)
+                tvgentelink = openfile('tvgente')
+                nometvgente=nome.replace('SPORTTV 1-','sptv1novo.png').replace('SPORTTV 2-','sptv2novo.png').replace('SPORTTV 3-','sptv3novo.png').replace('SPORTTV 4-','jogooo.png').replace('SPORTTV 5-','sptv511.png').replace('Eurosport-','eurosportnovo.png').replace('Eurosport 2-','eurosport2novo.png').replace('ESPN-','espnnovo.png').replace('RTP 1-','1rtp.png').replace('RTP 2-','rtp2novo.png').replace('RTP Informação-','rtpinfonovo.png').replace('RTP Internacional-','rtp intnovo.png').replace('RTP Memória-','memoriartpnovo.png').replace('RTP Açores-','acoresnovortp.png').replace('RTP Madeira-','madeirartpnovo.png').replace('SIC-','3.gif').replace('SIC Noticias-','sicnnovo.png').replace('TVI-','tvinovo.png').replace('TVI24-','tvi24novo.png').replace('Porto Canal-','portonovo.png').replace('Benfica TV 1-','btvnovo.png').replace('Benfica TV 2-','btvnovo.png').replace('Sporting TV-','sportingtv.png').replace('A Bola TV-','biolatv.png').replace('CM TV-','cmtv.png').replace('Económico TV-','ecnovo.png').replace('FOX-','foxnovo.png').replace('Discovery Channel-','discnovo.png').replace('História-','historia').replace('Casa dos Segredos 5-','casa do putedo1.jpg')
+                tvgente=re.compile("\('(.+?)'.+?<img.+?" +nometvgente + '"').findall(tvgentelink)
+                nometvgente=nome.replace('SPORTTV 1-','miga1.png').replace('SPORTTV 2-','miga2.png').replace('SPORTTV 3-','miga3.png').replace('SPORTTV 4-','miga 4.png').replace('SPORTTV 5-','miga5.png').replace('Benfica TV 1-','btv11.png').replace('Benfica TV 2-','btv11.png').replace('SIC Noticias-','hd1sic.png').replace('Sporting TV-','testesporting.png')
+                tvgente+=re.compile("\('(.+?)'.+?<img.+?" +nometvgente + '"').findall(tvgentelink)
+                
+                #new way to get stuff without the need to change source.
+                #nometvgente=nome.replace('RTP 1-','RTP 1 Online').replace('RTP 2-','RTP 2 Online').replace('SIC-','SIC Online').replace('TVI-','TVI Online').replace('SPORTTV 1-','Sport TV em Direto').replace('Big Brother VIP-','BB VIP').replace('SIC K-','SIC K Online').replace('SIC Radical-','SIC Radical Online').replace('SIC Mulher-','SIC Mulher Online').replace('SIC Noticias-','SIC Noticias Online').replace('TVI24-','TVI24 online').replace('Hollywood-','Canal Hollywood').replace('MOV-','Canal MOV').replace('AXN-','AXN Portugal').replace('AXN Black-','AXN Black Online').replace('AXN White-','AXN White online').replace('FOX-','Fox Online PT').replace('FOX Crime-','FOX Crime Online').replace('FOX Life-','FOX Life Online').replace('FOX Movies-','FOX Movies Portugal').replace('Canal Panda-','Canal Panda').replace('Discovery Channel-','Discovery Channel PT').replace('Eurosport-','Eurosport Portugal').replace('Benfica TV 1-','Benfica TV online').replace('Benfica TV 2-','Benfica TV online').replace('Porto Canal-','Porto Canal - Emissão Online').replace('Syfy-','SYFY Channel Portugal').replace('Odisseia-','Canal Odisseia').replace('História-','Canal Historia Portugal').replace('National Geographic Channel-','National Geographic PT').replace('MTV-','MTV Portugal').replace('RTP Açores-','RTP Açores Online').replace('RTP Africa-','RTP África Online').replace('RTP Informação-','RTP Informação - Emissão Online').replace('RTP Madeira-','RTP Madeira Online').replace('RTP Memória-','RTP Memória').replace('Disney Channel-','Disney Portugal').replace('Panda Biggs-','Panda Biggs').replace('Motors TV-','Motors TV Online').replace('ESPN-','ESPN Online BR').replace('ESPN America-','ESPN Online BR').replace('A Bola TV-','A Bola TV').replace('RTP Africa-','RTP Africa').replace('RTP Madeira-','RTP Madeira').replace('RTP Internacional-','RTP Internacional').replace('RTP Açores-','RTP Açores').replace('A Bola TV-','A Bola TV').replace('Casa dos Segredos 5-','A Casa dos Segredos').replace('CM TV-','CMTV em direto').replace('TVI Ficção-','TVI Ficção online').replace('Panda Biggs-','Panda Biggs').replace('Económico TV-','Económico TV - Emissão Online').replace('Disney Junior-','Canal Disney Junior').replace('TV Record-','Record Online ao Vivo').replace('Discovery Turbo-','Discovery Turbo Brasil').replace('Caça e Pesca-','Caza y Pesca').replace('Sporting TV-','Sporting TV online')
+                #tvgente=re.compile('<a href="(.*?)'+nometvgente+'..htm"').findall(tvgentelink)
+                if tvgente:
+                    for codigo in tvgente:
+                        tvgenteref=int(tvgenteref + 1)
+                        if len(tvgente)==1: tvgente2=str('')
+                        else: tvgente2=' ' + str(tvgenteref)
+                        titles.append('TV Gente' + tvgente2)
+                        ligacao.append(codigo)
+            except: pass
+  
+        if re.search('SPORTTV 1 HD',nomelista) or re.search('SPORTTV 1',nomelista):
+            titles.append('TVGO.be')
+            ligacao.append(TVGOURL)
+  
+        if re.search('SPORTTV 2',nomelista):
+            titles.append('TVGO.be')
+            ligacao.append(TVGOURL + 'sport2.html')
 
 
         ########################################TVTUGA############################
@@ -529,8 +561,6 @@ def todosact(parametro):
     xbmc.executebuiltin("XBMC.Notification(TV Portuguesa, Lista xml/m3u gravada,'100000'," + tvporpath + art + "icon32-ver1.png)")
 
 def pre_resolvers(titles,ligacao,index,nome,tamanho=0,zapping=False):
-    #import buggalo
-    #buggalo.SUBMIT_URL = 'http://fightnight.pusku.com/exceptions/submit.php'
     marcador='A iniciar pre resolvers'
     try:
         sys.argv[2]=sys.argv[2]+ titles[index]
@@ -613,8 +643,8 @@ def pre_resolvers(titles,ligacao,index,nome,tamanho=0,zapping=False):
                 #html= abrir_url_tommy(embed,ref_data)
                 from resources.lib import cloudflare
                 html=cloudflare.webpage_request(embed)
-                if re.search('embedsecure.js',html):
-                    html+=abrir_url_tommy(re.compile('src="([^"]+?)embedsecure.js"').findall(html)[0] + 'embedsecure.js',ref_data).decode('string-escape')
+                if re.search('embed.js',html):
+                    html+=abrir_url_tommy(re.compile('src="([^"]+?)embed.js"').findall(html)[0] + 'embed.js',ref_data).decode('string-escape')
                 descobrirresolver(embed,nome,html,zapping,nomeserver)
 
             elif re.search('tvfree',linkescolha):
@@ -626,8 +656,9 @@ def pre_resolvers(titles,ligacao,index,nome,tamanho=0,zapping=False):
                     marcador="Pre-catcher: tv a cores - antena"; print marcador
                     try:frame=re.compile('<iframe id="player"[^>]+?src="([^"]+?)"').findall(link)[0]
                     except:frame=re.compile('<iframe src="([^"]+?)" id="innerIframe"').findall(link)[0]
-                    if not re.search('antena.tvfree',frame): frame= TVCoresURL + frame
+                    #if not re.search('antena.mytvfree',frame): frame= TVCoresURL + frame
                     ref_data = {'Referer': linkescolha,'User-Agent':user_agent}
+                    #frame=frame.replace('http://mytvfree.mehttp://antena.mytvfree.me','http://antena.mytvfree.me/')
                     link= abrir_url_tommy(frame,ref_data)
                     descobrirresolver(frame, nome,link,zapping,nomeserver)
 
@@ -637,8 +668,8 @@ def pre_resolvers(titles,ligacao,index,nome,tamanho=0,zapping=False):
                     frame = "http://www.meocanaltv.com/embed/"+tempId+".php";
                     ref_data = {'Referer': linkescolha,'User-Agent':user_agent}
                     link= abrir_url_tommy(frame,ref_data)
-                    if re.search('embedsecure.js',link):
-                        link+=abrir_url_tommy(re.compile('src="([^"]+?)embedsecure.js"').findall(link)[0] + 'embedsecure.js',ref_data).decode('string-escape')
+                    if re.search('embed.js',link):
+                        link+=abrir_url_tommy(re.compile('src="([^"]+?)embed.js"').findall(link)[0] + 'embed.js',ref_data).decode('string-escape')
                     descobrirresolver(frame, nome,link,zapping,nomeserver)
 
                 else: descobrirresolver(linkescolha, nome,False,zapping,nomeserver)
@@ -699,7 +730,6 @@ def pre_resolvers(titles,ligacao,index,nome,tamanho=0,zapping=False):
             print etype
             print value
             print traceback
-            #buggalo.onExceptionRaised()
         else:
             try:debug.append(nomeserver + ' - ' + marcador)
             except: pass
@@ -715,8 +745,6 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
     marcador='A iniciar Resolvers'
     if zapping==False and activado==False: mensagemprogresso.update(50)
     try:
-        #import buggalo
-        #buggalo.SUBMIT_URL = 'http://fightnight.pusku.com/exceptions/submit.php'
         yoyo265='type:"flash".+?"'
         yoyo115='file:'
 
@@ -808,8 +836,9 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
             #embed=re.compile('<br/><iframe.+?src="(.+?)" id="innerIframe"').findall(link)[0]
             embed=re.compile('<iframe[^<]+?src="([^"]+?)" id="innerIframe"').findall(link)[0]
             ref_data = {'Referer': url_frame,'User-Agent':user_agent}
+            #urlembed = embed
             urlembed=TVCoresURL + embed
-            urlembed=urlembed.replace('http://tvfree.mehttp://antena.tvfree2.me/','http://antena.tvfree2.me/')
+            urlembed=urlembed.replace('http://mytvfree.mehttp://antena.mytvfree.me','http://antena.mytvfree.me/')
             html = abrir_url_tommy(urlembed,ref_data)
             descobrirresolver(urlembed,nomecanal,html,zapping,nomeserver)
 
@@ -1706,8 +1735,8 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
             meotv='http://www.meocanaltv.com/embed/' + chid  + '.php'
             ref_data = {'Referer': url_frame,'User-Agent':user_agent}
             html= abrir_url_tommy(meotv,ref_data)
-            if re.search('embedsecure.js',html):
-                html+=abrir_url_tommy(re.compile('src="([^"]+?)embedsecure.js"').findall(html)[0] + 'embedsecure.js',ref_data).decode('string-escape')
+            if re.search('embed.js',html):
+                html+=abrir_url_tommy(re.compile('src="([^"]+?)embed.js"').findall(html)[0] + 'embed.js',ref_data).decode('string-escape')
             descobrirresolver(meotv,nomecanal,html,zapping,nomeserver)
 
         elif re.search('=myStream.sdp',link):
@@ -2482,7 +2511,6 @@ def descobrirresolver(url_frame,nomecanal,linkrecebido,zapping,nomeserver):
         else:
             try:debug.append(nomeserver + ' - ' + marcador)
             except: pass
-        #buggalo.onExceptionRaised()
 
 
 ### PRAIAS ####
@@ -2607,7 +2635,7 @@ def paginasradios(url,link):
     except: pass
 
 def radiosobterurlstream(name,url):
-    GA("None","Radio - " + name)
+    #GA("None","Radio - " + name)
     mensagemprogresso.create('TV Portuguesa','A carregar...')
     mensagemprogresso.update(0)
     if re.search('www.radios.pt',url):
@@ -2863,7 +2891,7 @@ def parseM3U(infile,link=False):
     return playlist
 
 def obter_lista(name,url):
-    GA("None",name)
+    #GA("None",name)
     titles = []; ligacao = []; thumb=[]
     link=abrir_url(url)
     if re.search('.m3u',url) or re.search('#EXTM3U',link):
@@ -2936,7 +2964,7 @@ def comecarvideo2(finalurl,name,directo,zapping,thumb=''):
     listacanaison=selfAddon.getSetting("listacanais2")
     siglacanal=''
     namega=name.replace('-','')
-    GA("player",namega)
+    #GA("player",namega)
     if directo==True:
         thumb=name.replace('Mais TVI-','maistvi-ver2.png').replace('AXN-','axn-ver2.png').replace('FOX-','fox-ver2.png').replace('RTP 1-','rtp1-ver2.png').replace('RTP 2-','rtp2-ver2.png').replace('SIC-','sic-ver3.png').replace('SPORTTV 1-','sptv1-ver2.png').replace('SPORTTV 1 HD-','sptvhd-ver2.png').replace('SPORTTV 2-','sptv2-ver2.png').replace('SPORTTV 3-','sptv3-ver2.png').replace('SPORTTV 4-','sptv4-ver2.png').replace('SPORTTV 5-','sptv5-ver2.png').replace('SPORTTV LIVE-','sptvlive-ver1.png').replace('TVI-','tvi-ver2.png').replace('Discovery Channel-','disc-ver2.png').replace('AXN Black-','axnb-ver2.png').replace('AXN White-','axnw-ver2.png').replace('FOX Crime-','foxc-ver2.png').replace('FOX Life-','foxl-ver3.png').replace('FOX Movies-','foxm-ver2.png').replace('Eurosport-','eusp-ver2.png').replace('Hollywood-','hwd-ver2.png').replace('MOV-','mov-ver2.png').replace('Canal Panda-','panda-ver2.png').replace('VH1-','vh1-ver2.png').replace('Benfica TV 1-','btv1-ver1.png').replace('Benfica TV 2-','btv2-ver1.png').replace('Porto Canal-','pcanal-ver2.png').replace('Big Brother VIP-','bbvip-ver2.png').replace('SIC K-','sick-ver2.png').replace('SIC Mulher-','sicm-ver3.png').replace('SIC Noticias-','sicn-ver2.png').replace('SIC Radical-','sicrad-ver2.png').replace('TVI24-','tvi24-ver2.png').replace('TVI Ficção-','tvif-ver2.png').replace('Syfy-','syfy-ver1.png').replace('Odisseia-','odisseia-ver1.png').replace('História-','historia-ver1.png').replace('National Geographic Channel-','natgeo-ver1.png').replace('MTV-','mtv-ver1.png').replace('CM TV-','cmtv-ver1.png').replace('RTP Informação-','rtpi-ver1.png').replace('Disney Channel-','disney-ver1.png').replace('Motors TV-','motors-ver1.png').replace('ESPN-','espn-ver1.png').replace('Fashion TV-','fash-ver1.png').replace('A Bola TV-','abola-ver1.png').replace('Casa dos Segredos 5-','casadseg-ver1.png').replace('RTP Açores-','rtpac-ver1.png').replace('RTP Internacional-','rtpint-ver1.png').replace('RTP Madeira-','rtpmad-ver1.png').replace('RTP Memória-','rtpmem-ver1.png').replace('RTP Africa-','rtpaf-ver1.png').replace('Panda Biggs-','pbiggs-ver1.png').replace('TV Record-','record-v1.png').replace('TV Globo-','globo-v1.png').replace('Eurosport 2-','eusp2-ver1.png').replace('Discovery Turbo-','discturbo-v1.png').replace('Toros TV-','toros-v1.png').replace('Chelsea TV-','chel-v1.png').replace('Disney Junior-','djun-ver1.png').replace('Económico TV-','econ-v1.png').replace('Caça e Pesca-','cacapesca-v1.png').replace('Sporting TV-','scptv-ver1.png').replace('Euronews-','euronews-ver1.png').replace('TPA Internacional-','tpa-ver1.png').replace('ARTV-','artv-ver1.png').replace('TRACE Urban-','traceu.png').replace('Virgin Radio TV-','virginr.png').replace('DJing TV-','djingtv.png')
         name=name.replace('-','')
@@ -3441,7 +3469,7 @@ def checker():
     if selfAddon.getSetting('ga_visitor')=='':
         from random import randint
         selfAddon.setSetting('ga_visitor',str(randint(0, 0x7fffffff)))
-    checkGA()
+    #checkGA()
 
 def limparcomentarioshtml(link,url_frame):
     print "A limpar: " + url_frame
